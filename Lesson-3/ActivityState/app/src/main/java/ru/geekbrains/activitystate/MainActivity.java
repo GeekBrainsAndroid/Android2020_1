@@ -22,17 +22,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initView();
+    }
+
+    private void initView() {
         // Получить пользовательские элементы по идентификатору
         textCounter1 = findViewById(R.id.textView1);
         textCounter2 = findViewById(R.id.textView2);
+        initButton2ClickListener();
+    }
+
+    private void initButton2ClickListener() {
         Button button2 = findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 counter2++;
-
-                //установить текст на TextView
-                textCounter2.setText(String.format(Locale.getDefault(), "%d", counter2));
+                setTextCounter(textCounter2, counter2);
             }
         });
     }
@@ -40,8 +46,11 @@ public class MainActivity extends AppCompatActivity {
     // Обработка кнопки через атрибут onClick в макете
     public void button1_onClick(View view) {
         counter1++;
+        setTextCounter(textCounter1, counter1);
+    }
 
-        // Установить текст на TextView
-        textCounter1.setText(String.format(Locale.getDefault(), "%d", counter1));
+    // Установить текст на TextView
+    private void setTextCounter(TextView textCounter, int counter){
+        textCounter.setText(String.format(Locale.getDefault(), "%d", counter));
     }
 }
