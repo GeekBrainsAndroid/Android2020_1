@@ -6,7 +6,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity">
 <include
-    layout="@layout/activity_main_constraint"
+    layout="@layout/activity_main_grid"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 </FrameLayout>
