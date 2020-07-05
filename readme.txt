@@ -7,4 +7,4 @@
 	Lesson-2/Scrolling - "Прокручивание списка"
 Урок 3:
 	Lesson-3/LifeCycleActivity - "Жизненный цикл активити"
-	
+	Lesson-3/ActivityState - "Обработка нажатий, сохранение состояния"
