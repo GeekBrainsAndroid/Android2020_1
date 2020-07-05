@@ -11,8 +11,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int counter1 = 0;       // первый счетчик
-    private int counter2 = 0;       // Второй счетчик
+    private Counters counters;
 
     private TextView textCounter1;  // пользовательский элемент 1-го счетчика
     private TextView textCounter2;  // пользовательский элемент 1-го счетчика
@@ -22,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        counters = new Counters();
         initView();
     }
 
@@ -37,16 +37,16 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter2++;
-                setTextCounter(textCounter2, counter2);
+                counters.incrementCounter1();
+                setTextCounter(textCounter2, counters.getCounter1());
             }
         });
     }
 
     // Обработка кнопки через атрибут onClick в макете
     public void button1_onClick(View view) {
-        counter1++;
-        setTextCounter(textCounter1, counter1);
+        counters.incrementCounter2();
+        setTextCounter(textCounter1, counters.getCounter2());
     }
 
     // Установить текст на TextView
