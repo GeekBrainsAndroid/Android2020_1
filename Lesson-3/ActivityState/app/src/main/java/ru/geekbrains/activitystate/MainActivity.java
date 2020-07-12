@@ -94,14 +94,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onSaveInstanceState(@NonNull Bundle instanceState) {
         super.onSaveInstanceState(instanceState);
-        instanceState.putSerializable(KeyCounters, counters);
+        instanceState.putParcelable(KeyCounters, counters);
     }
 
     // Восстановление данных
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle instanceState) {
         super.onRestoreInstanceState(instanceState);
-        counters = (Counters) instanceState.getSerializable(KeyCounters);
+        counters = instanceState.getParcelable(KeyCounters);
         setTextCounters();
     }
 
