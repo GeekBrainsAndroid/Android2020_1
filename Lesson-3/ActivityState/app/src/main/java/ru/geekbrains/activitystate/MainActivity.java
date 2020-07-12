@@ -1,5 +1,6 @@
 package ru.geekbrains.activitystate;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private final static String KeyCounters = "Counters";
 
     private Counters counters;
 
@@ -85,5 +88,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // Установить текст на TextView
     private void setTextCounter(TextView textCounter, int counter){
         textCounter.setText(String.format(Locale.getDefault(), "%d", counter));
+    }
+
+    // Сохранение данных
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle instanceState) {
+        super.onSaveInstanceState(instanceState);
+        instanceState.putSerializable(KeyCounters, counters);
+    }
+
+    // Восстановление данных
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle instanceState) {
+        super.onRestoreInstanceState(instanceState);
+        counters = (Counters) instanceState.getSerializable(KeyCounters);
+        setTextCounters();
+    }
+
+    // Отображение данных на экране
+    private void setTextCounters(){
+        setTextCounter(textCounter1, counters.getCounter1());
+        setTextCounter(textCounter2, counters.getCounter2());
+        setTextCounter(textCounter3, counters.getCounter3());
+        setTextCounter(textCounter4, counters.getCounter4());
     }
 }
