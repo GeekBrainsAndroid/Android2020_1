@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ресурсы</string>
+    <string name="language">Русский</string>
+    <string name="orientation">Портрет</string>
+    <string name="night_mode">Не ночь</string>
+    <string name="screen_format">Не длинный</string>
+    <string name="descriptionLanguage">Язык</string>
+    <string name="descriptionDensity">Плотность</string>
+    <string name="descriptionOrientation">Ориентация</string>
+    <string name="descriptionNight_mode">Ночной режим</string>
+    <string name="descriptionScreen_format">Формат экрана</string>
+    <string name="descriptionVersion">Версия</string>
+</resources>
