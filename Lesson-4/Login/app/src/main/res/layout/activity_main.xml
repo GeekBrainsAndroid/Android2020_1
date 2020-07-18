@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/MyCoolStyle">
+        android:theme="@style/MyCoolStyle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginName"
-        style="@style/MyCoolStyle">
+        android:theme="@style/MyCoolStyle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
