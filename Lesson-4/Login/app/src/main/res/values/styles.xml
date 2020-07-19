@@ -16,4 +16,13 @@
         <item name="android:fontFamily">cursive</item>
         <item name="android:textStyle">italic</item>
     </style>
+
+    <style name="AppThemeLight" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">#e91e63</item>
+        <item name="colorPrimaryDark">#b0003a</item>
+        <item name="colorAccent">#ff6090</item>
+    </style>
+
+    <style name="AppThemeDark" parent="Theme.MaterialComponents">
+    </style>
 </resources>
