@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Constants {
+    private EditText txtName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         Button btnGreetings = findViewById(R.id.btnGreetings);
-        final EditText txtName = findViewById(R.id.textName);
         final TextView txtGreetings = findViewById(R.id.textHello);
+        txtName = findViewById(R.id.textName);
         btnGreetings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
                 // Чтобы стартовать активити надо подготовить интент
                 // В данном случае это будет явный интент, поскольку здесь передается класс активити
                 Intent runSettings = new Intent(MainActivity.this, SettingsActivity.class);
+                // Передача данных через интент
+                runSettings.putExtra(YOUR_NAME, txtName.getText().toString());
                 // Метод стратует активити, указанную в интенте
                 startActivity(runSettings);
             }
