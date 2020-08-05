@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+        if (bundle == null){
+            return;
+        }
         String text  = bundle.getString(TEXT); // получить данные из Intent
         TextView textView = findViewById(R.id.textEcho);
         textView.setText(text); // Сохранить их в TextView
