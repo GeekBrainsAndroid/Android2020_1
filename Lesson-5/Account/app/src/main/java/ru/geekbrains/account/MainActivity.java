@@ -11,12 +11,14 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements Constants {
     private EditText txtName;
+    private Account account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        account = new Account();
         initView();
     }
 
@@ -40,11 +42,16 @@ public class MainActivity extends AppCompatActivity implements Constants {
                 // Чтобы стартовать активити надо подготовить интент
                 // В данном случае это будет явный интент, поскольку здесь передается класс активити
                 Intent runSettings = new Intent(MainActivity.this, SettingsActivity.class);
+                populateAccount();
                 // Передача данных через интент
-                runSettings.putExtra(YOUR_NAME, txtName.getText().toString());
+                runSettings.putExtra(YOUR_ACCOUNT, account);
                 // Метод стратует активити, указанную в интенте
                 startActivity(runSettings);
             }
         });
+    }
+
+    private void populateAccount(){
+        account.setName(txtName.getText().toString());
     }
 }
