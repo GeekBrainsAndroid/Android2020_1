@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Intent Start</string>
+    <string name="run_echo">Run Echo</string>
+    <string name="name">Name</string>
+</resources>
