@@ -2,6 +2,7 @@ package ru.geekbrains.account;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,10 +32,22 @@ public class SettingsActivity extends AppCompatActivity implements Constants {
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intentResult = new Intent();
+                intentResult.putExtra(YOUR_ACCOUNT, createAccount());
+                setResult(RESULT_OK, intentResult);
                  // Метод finish() завершает активити
                 finish();
             }
         });
+    }
+
+    private Account createAccount(){
+        Account account = new Account(
+                editName.getText().toString(),
+                editSurname.getText().toString(),
+                Integer.parseInt(editAge.getText().toString()),
+                editEmail.getText().toString());
+        return account;
     }
 
     private void populateView(Account account) {
