@@ -14,3 +14,4 @@
 Урок 5:
 	Lesson-5/Account - "Вызов активити в приложении"
 	Lesson-5/CallBrowser - "Вызов браузера"
+	Lesson-5/IntentProcess - "Обработка интента. Фильтр-интент"
