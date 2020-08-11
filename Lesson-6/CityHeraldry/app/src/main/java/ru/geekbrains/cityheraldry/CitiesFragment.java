@@ -17,6 +17,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class CitiesFragment extends Fragment {
 
+    public static final String CURRENT_CITY = "CurrentCity";
+    private int currentPosition = 0;    // Текущая позиция (выбранный город)
     private boolean isLandscape;
 
     // При создании фрагмента укажем его макет
@@ -52,10 +54,18 @@ public class CitiesFragment extends Fragment {
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showCoatOfArms(fi);
+                    currentPosition = fi;
+                    showCoatOfArms(currentPosition);
                 }
             });
         }
+    }
+
+    // Сохраним текущую позицию (вызывается перед выходом из фрагмента)
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putInt(CURRENT_CITY, currentPosition);
+        super.onSaveInstanceState(outState);
     }
 
     // activity создана, можно к ней обращаться. Выполним начальные действия
@@ -67,9 +77,15 @@ public class CitiesFragment extends Fragment {
         isLandscape = getResources().getConfiguration().orientation
                 == Configuration.ORIENTATION_LANDSCAPE;
 
+        // Если это не первое создание, то восстановим текущую позицию
+        if (savedInstanceState != null) {
+            // Восстановление текущей позиции.
+            currentPosition = savedInstanceState.getInt(CURRENT_CITY, 0);
+        }
+
         // Если можно нарисовать рядом герб, то сделаем это
         if (isLandscape) {
-            showLandCoatOfArms(0);
+            showLandCoatOfArms(currentPosition);
         }
     }
 
