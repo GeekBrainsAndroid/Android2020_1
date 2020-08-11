@@ -1,5 +1,6 @@
 package ru.geekbrains.cityheraldry;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +43,23 @@ public class CitiesFragment extends Fragment {
             tv.setText(city);
             tv.setTextSize(30);
             layoutView.addView(tv);
+            final int fi = i;
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showPortCoatOfArms(fi);
+                }
+            });
         }
+    }
+
+    // Показать герб в портретной ориентации.
+    private void showPortCoatOfArms(int index) {
+            // Откроем вторую activity
+            Intent intent = new Intent();
+            intent.setClass(getActivity(), CoatOfArmsActivity.class);
+            // и передадим туда параметры
+            intent.putExtra(CoatOfArmsFragment.ARG_INDEX, index);
+            startActivity(intent);
     }
 }
