@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 if (arg1 == arg2) {
                     textView.setText("Равно!");
                 } else {
-                    textView.setText("Равно!");
+                    textView.setText("Не равно!");
                 }
 
             }
