@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CallBrowser</string>
+    <string name="defaultUrl">https://geekbrains.ru</string>
+    <string name="go">go</string>
+</resources>
