@@ -8,3 +8,5 @@
 Урок 3:
 	Lesson-3/LifeCycleActivity - "Жизненный цикл активити"
 	Lesson-3/ActivityState - "Обработка нажатий, сохранение состояния"
+Урок 4:
+	Lesson-4/Resources - "Работа с ресурсами"
