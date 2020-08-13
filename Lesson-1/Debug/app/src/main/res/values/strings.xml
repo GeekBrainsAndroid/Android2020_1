@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Debug</string>
+    <string name="is_equal">Равно?</string>
+</resources>
