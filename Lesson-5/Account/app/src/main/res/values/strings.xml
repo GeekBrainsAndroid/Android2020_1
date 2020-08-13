@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Account</string>
+    <string name="your_name">Your name</string>
+    <string name="greetings">Greetings</string>
+    <string name="account">Account</string>
+    <string name="say_hello">Hello,\u0020</string>
+    <string name="your_surname">Your surname</string>
+    <string name="your_age">Your age</string>
+    <string name="your_e_mail">Your e-mail</string>
+    <string name="_return">Return</string>
+</resources>

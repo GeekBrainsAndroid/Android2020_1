@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Аккаунт</string>
+    <string name="your_name">Ваше имя</string>
+    <string name="greetings">Приветствие</string>
+    <string name="account">Аккаунт</string>
+    <string name="say_hello">Привет,\u0020</string>
+    <string name="your_surname">Ваша фамилия</string>
+    <string name="your_age">Ваш возраст</string>
+    <string name="your_e_mail">Ваш электронный адрес</string>
+    <string name="_return">Возврат</string>
+</resources>
