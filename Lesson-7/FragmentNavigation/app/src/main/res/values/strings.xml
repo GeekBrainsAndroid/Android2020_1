@@ -13,4 +13,7 @@
     <string name="main">Main</string>
     <string name="back">Back</string>
     <string name="search">search</string>
+    <string name="item1">item 1</string>
+    <string name="item2">item 2</string>
+    <string name="new_menu_item_added">Menu item added</string>
 </resources>
