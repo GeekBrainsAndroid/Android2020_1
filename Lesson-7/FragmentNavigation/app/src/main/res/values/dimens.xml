@@ -2,4 +2,6 @@
 <resources>
     <dimen name="settings_dimen">30sp</dimen>
     <dimen name="fragment_dimen">40sp</dimen>
+    <dimen name="nav_header_height">200dp</dimen>
+    <dimen name="nav_header_dimen">42sp</dimen>
 </resources>

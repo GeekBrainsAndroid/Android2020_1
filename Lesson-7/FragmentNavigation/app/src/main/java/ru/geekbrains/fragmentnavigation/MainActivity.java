@@ -1,8 +1,12 @@
 package ru.geekbrains.fragmentnavigation;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
@@ -28,24 +34,57 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        initToolbar();
+        Toolbar toolbar = initToolbar();
+        initDrawer(toolbar);
         initButtonMain();
         initButtonFavorite();
         initButtonSettings();
         initButtonBack();
     }
 
-    private void initToolbar() {
+    // регистрация drawer
+    private void initDrawer(Toolbar toolbar) {
+        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        // Обработка навигационного меню
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                if (navigateFragment(id)){
+                    drawer.closeDrawer(GravityCompat.START);
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    private Toolbar initToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        return toolbar;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Обработка выбора пункта меню приложения (активити)
         int id = item.getItemId();
+        if (navigateFragment(id)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-        switch(id){
+    private boolean navigateFragment(int id) {
+        switch (id) {
             case R.id.action_settings:
                 addFragment(new SettingsFragment());
                 return true;
@@ -56,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 addFragment(new FavoriteFragment());
                 return true;
         }
-        return super.onOptionsItemSelected(item);
+        return false;
     }
 
     @Override
@@ -72,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, query, Toast.LENGTH_SHORT).show();
                 return true;
             }
+
             // реагирует на нажатие каждой клавиши
             @Override
             public boolean onQueryTextChange(String newText) {
@@ -88,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = getSupportFragmentManager();
-                if (Settings.IsBackAsRemove){
+                if (Settings.IsBackAsRemove) {
                     Fragment fragment = getVisibleFragment(fragmentManager);
                     if (fragment != null) {
                         fragmentManager.beginTransaction().remove(fragment).commit();
@@ -130,18 +170,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private Fragment getVisibleFragment(FragmentManager fragmentManager){
+    private Fragment getVisibleFragment(FragmentManager fragmentManager) {
         List<Fragment> fragments = fragmentManager.getFragments();
         int countFragments = fragments.size();
-        for(int i = countFragments - 1; i >= 0; i--){
+        for (int i = countFragments - 1; i >= 0; i--) {
             Fragment fragment = fragments.get(i);
-            if(fragment.isVisible())
+            if (fragment.isVisible())
                 return fragment;
         }
         return null;
     }
 
-    private void addFragment(Fragment fragment){
+    private void addFragment(Fragment fragment) {
 
         //Получить менеджер фрагментов
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -150,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         // Удалить видимый фрагмент
-        if (Settings.IsDeleteBeforeAdd){
+        if (Settings.IsDeleteBeforeAdd) {
             Fragment fragmentToRemove = getVisibleFragment(fragmentManager);
             if (fragmentToRemove != null) {
                 fragmentTransaction.remove(fragmentToRemove);
@@ -165,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Добавить транзакцию в бакстек
-        if (Settings.IsBackStack){
+        if (Settings.IsBackStack) {
             fragmentTransaction.addToBackStack(null);
         }
 
@@ -174,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Чтение настроек
-    private void readSettings(){
+    private void readSettings() {
         // Специальный класс для хранения настроек
         SharedPreferences sharedPref = getSharedPreferences(Settings.SHARED_PREFERENCE_NAME, MODE_PRIVATE);
         // Считываем значения настроек
