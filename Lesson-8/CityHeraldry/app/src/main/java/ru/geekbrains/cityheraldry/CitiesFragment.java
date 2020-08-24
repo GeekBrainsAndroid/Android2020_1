@@ -40,16 +40,23 @@ public class CitiesFragment extends Fragment {
         LinearLayout layoutView = (LinearLayout) view;
         String[] cities = getResources().getStringArray(R.array.cities);
 
-        // В этом цикле создаем элемент TextView,
+        // При помощи этого объекта будем доставать элементы, спрятанные в item.xml
+        LayoutInflater ltInflater = getLayoutInflater();
+
+        // В этом цикле ищем элемент TextView в item.xml,
         // заполняем его значениями,
-        // и добавляем на экран.
+        // и добавляем на экран item.xml.
         // Кроме того, создаем обработку касания на элемент
         for (int i = 0; i < cities.length; i++) {
             String city = cities[i];
-            TextView tv = new TextView(getContext());
+
+            // Достаем элемент из item.xml
+            View item = ltInflater.inflate(R.layout.item, layoutView, false);
+            // Находим в этом элементе TextView
+            TextView tv = item.findViewById(R.id.textView);
             tv.setText(city);
-            tv.setTextSize(30);
-            layoutView.addView(tv);
+            layoutView.addView(item);
+
             final int fi = i;
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
