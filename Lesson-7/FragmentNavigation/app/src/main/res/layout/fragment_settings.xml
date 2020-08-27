@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchBackStack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/use_backstack"
+        android:textSize="@dimen/settings_dimen" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_fragment"
+            android:textSize="@dimen/settings_dimen" />
+
+        <RadioButton
+            android:id="@+id/radioButtonAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/add"
+            android:textSize="@dimen/settings_dimen" />
+
+        <RadioButton
+            android:id="@+id/radioButtonReplace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/replace"
+            android:textSize="@dimen/settings_dimen" />
+    </RadioGroup>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchBackAsRemove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/back_as_remove_fragment"
+        android:textSize="@dimen/settings_dimen" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchDeleteBeforeAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_before_add"
+        android:textSize="@dimen/settings_dimen" />
+
+</LinearLayout>

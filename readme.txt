@@ -18,3 +18,5 @@
 Урок 6:
 	Lesson-6/CityHeraldry - "Демонстрация работы приложения с фрагментами"
 	Lesson-6/FragmentObserver - "Передача данных между фрагментами"
+Урок 7:
+	Lesson-7/FragmentNavigation - "Навигация через фрагменты"

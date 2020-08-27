@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Fragment Navigation</string>
+    <string name="delete_before_add">Delete before add</string>
+    <string name="back_as_remove_fragment">Back as remove fragment</string>
+    <string name="replace">replace</string>
+    <string name="add">add</string>
+    <string name="new_fragment">New fragment:</string>
+    <string name="use_backstack">Use backstack</string>
+    <string name="main_screen">Main screen</string>
+    <string name="favorite_screen">Favorite screen</string>
+    <string name="settings">Settings</string>
+    <string name="favorite">Favorite</string>
+    <string name="main">Main</string>
+    <string name="back">Back</string>
+    <string name="search">search</string>
+    <string name="item1">item 1</string>
+    <string name="item2">item 2</string>
+    <string name="new_menu_item_added">Menu item added</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>
