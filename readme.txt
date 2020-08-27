@@ -20,3 +20,5 @@
 	Lesson-6/FragmentObserver - "Передача данных между фрагментами"
 Урок 7:
 	Lesson-7/FragmentNavigation - "Навигация через фрагменты"
+Урок 8:
+	Lesson-8/CityHeraldry - "Создание списка надуванием"
