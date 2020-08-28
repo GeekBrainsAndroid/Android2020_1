@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import ru.geekbrains.socialnetwork.R;
 
@@ -39,7 +41,16 @@ public class SocialNetworkFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // Установим адаптер
-        SocialNetworkAdapter adapter = new SocialNetworkAdapter(data);
+        final SocialNetworkAdapter adapter = new SocialNetworkAdapter(data);
         recyclerView.setAdapter(adapter);
+
+        // Установим слушателя
+        adapter.SetOnItemClickListener(new SocialNetworkAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(getContext(), String.format("%s - %d", ((TextView)view).getText(), position), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

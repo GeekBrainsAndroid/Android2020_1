@@ -14,6 +14,7 @@ public class SocialNetworkAdapter
         extends RecyclerView.Adapter<SocialNetworkAdapter.ViewHolder> {
 
     private String[] dataSource;
+    private OnItemClickListener itemClickListener;  // Слушатель будет устанавливаться извне
 
     // Передаем в конструктор источник данных
     // В нашем случае это массив, но может быть и запросом к БД
@@ -49,6 +50,16 @@ public class SocialNetworkAdapter
         return dataSource.length;
     }
 
+    // Сеттер слушателя нажатий
+    public void SetOnItemClickListener(OnItemClickListener itemClickListener){
+        this.itemClickListener = itemClickListener;
+    }
+
+    // Интерфейс для обработки нажатий как в ListView
+    public interface OnItemClickListener {
+        void onItemClick(View view , int position);
+    }
+
     // Этот класс хранит связь между данными и элементами View
     // Сложные данные могут потребовать несколько View на
     // один пункт списка
@@ -59,6 +70,16 @@ public class SocialNetworkAdapter
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = (TextView) itemView;
+
+            // Обработчик нажатий на этом ViewHolder
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (itemClickListener != null) {
+                        itemClickListener.onItemClick(v, getAdapterPosition());
+                    }
+                }
+            });
         }
 
         public TextView getTextView() {
