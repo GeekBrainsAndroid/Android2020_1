@@ -1,24 +1,30 @@
 package ru.geekbrains.socialnetwork.ui;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import ru.geekbrains.socialnetwork.R;
+import ru.geekbrains.socialnetwork.data.CardData;
+import ru.geekbrains.socialnetwork.data.CardsSource;
 
 public class SocialNetworkAdapter
         extends RecyclerView.Adapter<SocialNetworkAdapter.ViewHolder> {
 
-    private String[] dataSource;
+    private final static String TAG = "SocialNetworkAdapter";
+    private CardsSource dataSource;
     private OnItemClickListener itemClickListener;  // Слушатель будет устанавливаться извне
 
     // Передаем в конструктор источник данных
     // В нашем случае это массив, но может быть и запросом к БД
-    public SocialNetworkAdapter(String[] dataSource) {
+    public SocialNetworkAdapter(CardsSource dataSource) {
         this.dataSource = dataSource;
     }
 
@@ -31,6 +37,7 @@ public class SocialNetworkAdapter
         // Через Inflater
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item, viewGroup, false);
+        Log.d(TAG, "onCreateViewHolder");
         // Здесь можно установить всякие параметры
         return new ViewHolder(v);
     }
@@ -41,13 +48,14 @@ public class SocialNetworkAdapter
     public void onBindViewHolder(@NonNull SocialNetworkAdapter.ViewHolder viewHolder, int i) {
         // Получить элемент из источника данных (БД, интернет...)
         // Вынести на экран используя ViewHolder
-        viewHolder.getTextView().setText(dataSource[i]);
+        viewHolder.setData(dataSource.getCardData(i));
+        Log.d(TAG, "onBindViewHolder");
     }
 
     // Вернуть размер данных, вызывается менеджером
     @Override
     public int getItemCount() {
-        return dataSource.length;
+        return dataSource.size();
     }
 
     // Сеттер слушателя нажатий
@@ -65,14 +73,20 @@ public class SocialNetworkAdapter
     // один пункт списка
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textView;
+        private TextView title;
+        private TextView description;
+        private AppCompatImageView image;
+        private CheckBox like;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = (TextView) itemView;
+            title = itemView.findViewById(R.id.title);
+            description = itemView.findViewById(R.id.description);
+            image = itemView.findViewById(R.id.imageView);
+            like = itemView.findViewById(R.id.like);
 
-            // Обработчик нажатий на этом ViewHolder
-            textView.setOnClickListener(new View.OnClickListener() {
+            // Обработчик нажатий на картинке
+            image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (itemClickListener != null) {
@@ -82,8 +96,11 @@ public class SocialNetworkAdapter
             });
         }
 
-        public TextView getTextView() {
-            return textView;
+        public void setData(CardData cardData){
+            title.setText(cardData.getTitle());
+            description.setText(cardData.getDescription());
+            like.setChecked(cardData.isLike());
+            image.setImageResource(cardData.getPicture());
         }
     }
 }

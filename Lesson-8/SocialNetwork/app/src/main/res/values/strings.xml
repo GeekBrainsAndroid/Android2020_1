@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Social Network</string>
+    <string name="title1">Зеленый лес</string>
+    <string name="title2">Гора</string>
+    <string name="title3">Водопад</string>
+    <string name="title4">Небо</string>
+    <string name="title5">Туман</string>
+    <string name="title6">Поляна</string>
+    <string name="title7">Осень</string>
+    <string name="description1">Сказочный зеленый лес</string>
+    <string name="description2">Одинокая гора</string>
+    <string name="description3">Бурный водопад в лесу</string>
+    <string name="description4">Красивое сумрачное небо</string>
+    <string name="description5">Мистический туман</string>
+    <string name="description6">Солнечная поляна</string>
+    <string name="description7">Красная осень</string>
 </resources>
