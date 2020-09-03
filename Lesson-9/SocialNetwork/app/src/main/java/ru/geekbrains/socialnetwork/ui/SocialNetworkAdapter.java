@@ -12,6 +12,8 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
+
 import ru.geekbrains.socialnetwork.R;
 import ru.geekbrains.socialnetwork.data.CardData;
 import ru.geekbrains.socialnetwork.data.CardsSource;
@@ -85,6 +87,7 @@ public class SocialNetworkAdapter
         private TextView description;
         private AppCompatImageView image;
         private CheckBox like;
+        private TextView date;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -92,6 +95,7 @@ public class SocialNetworkAdapter
             description = itemView.findViewById(R.id.description);
             image = itemView.findViewById(R.id.imageView);
             like = itemView.findViewById(R.id.like);
+            date = itemView.findViewById(R.id.date);
 
             registerContextMenu(itemView);
 
@@ -134,6 +138,7 @@ public class SocialNetworkAdapter
             description.setText(cardData.getDescription());
             like.setChecked(cardData.isLike());
             image.setImageResource(cardData.getPicture());
+            date.setText(new SimpleDateFormat("dd-MM-yy").format(cardData.getDate()));
         }
     }
 }
