@@ -22,3 +22,4 @@
 	Lesson-7/FragmentNavigation - "Навигация через фрагменты"
 Урок 8:
 	Lesson-8/CityHeraldry - "Создание списка надуванием"
+	Lesson-8/SocialNetwork - "Демонстрация создания списка"
