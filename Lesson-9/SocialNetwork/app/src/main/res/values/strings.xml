@@ -14,4 +14,6 @@
     <string name="description5">Мистический туман</string>
     <string name="description6">Солнечная поляна</string>
     <string name="description7">Красная осень</string>
+    <string name="add">Добавить</string>
+    <string name="clear">Очистить</string>
 </resources>

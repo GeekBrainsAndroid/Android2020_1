@@ -2,22 +2,31 @@ package ru.geekbrains.socialnetwork.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import ru.geekbrains.socialnetwork.R;
+import ru.geekbrains.socialnetwork.data.CardData;
 import ru.geekbrains.socialnetwork.data.CardsSource;
 import ru.geekbrains.socialnetwork.data.CardsSourceImpl;
 
 public class SocialNetworkFragment extends Fragment {
+
+    private CardsSource data;
+    private SocialNetworkAdapter adapter;
+    private RecyclerView recyclerView;
 
     public static SocialNetworkFragment newInstance() {
         return new SocialNetworkFragment();
@@ -28,14 +37,43 @@ public class SocialNetworkFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_socialnetwork, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view_lines);
         // Получим источник данных для списка
-        CardsSource data = new CardsSourceImpl(getResources()).init();
-        initRecyclerView(recyclerView, data);
+        data = new CardsSourceImpl(getResources()).init();
+        initView(view);
+        setHasOptionsMenu(true);
         return view;
     }
 
-    private void initRecyclerView(RecyclerView recyclerView, CardsSource data){
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.cards_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_add:
+                data.addCardData(new CardData("Заголовок " + data.size(),
+                        "Описание " + data.size(),
+                        R.drawable.nature1,
+                        false));
+                adapter.notifyItemInserted(data.size() - 1);
+                recyclerView.scrollToPosition(data.size() - 1);
+                return true;
+            case R.id.action_clear:
+                data.clearCardData();
+                adapter.notifyDataSetChanged();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void initView(View view) {
+        recyclerView = view.findViewById(R.id.recycler_view_lines);
+        initRecyclerView();
+    }
+
+    private void initRecyclerView(){
 
         // Эта установка служит для повышения производительности системы
         recyclerView.setHasFixedSize(true);
@@ -45,7 +83,7 @@ public class SocialNetworkFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // Установим адаптер
-        final SocialNetworkAdapter adapter = new SocialNetworkAdapter(data);
+        adapter = new SocialNetworkAdapter(data);
         recyclerView.setAdapter(adapter);
 
         // Добавим разделитель карточек
