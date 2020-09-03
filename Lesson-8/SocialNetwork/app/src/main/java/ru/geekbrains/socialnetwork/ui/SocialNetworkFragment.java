@@ -3,6 +3,7 @@ package ru.geekbrains.socialnetwork.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,6 +47,11 @@ public class SocialNetworkFragment extends Fragment {
         // Установим адаптер
         final SocialNetworkAdapter adapter = new SocialNetworkAdapter(data);
         recyclerView.setAdapter(adapter);
+
+        // Добавим разделитель карточек
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(),  LinearLayoutManager.VERTICAL);
+        itemDecoration.setDrawable(getResources().getDrawable(R.drawable.separator, null));
+        recyclerView.addItemDecoration(itemDecoration);
 
         // Установим слушателя
         adapter.SetOnItemClickListener(new SocialNetworkAdapter.OnItemClickListener() {
