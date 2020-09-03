@@ -16,4 +16,6 @@
     <string name="description7">Красная осень</string>
     <string name="add">Добавить</string>
     <string name="clear">Очистить</string>
+    <string name="update">Изменить</string>
+    <string name="delete">Удалить</string>
 </resources>

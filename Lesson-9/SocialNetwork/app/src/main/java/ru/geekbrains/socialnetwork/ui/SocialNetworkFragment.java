@@ -3,11 +3,13 @@ package ru.geekbrains.socialnetwork.ui;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -83,7 +85,7 @@ public class SocialNetworkFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // Установим адаптер
-        adapter = new SocialNetworkAdapter(data);
+        adapter = new SocialNetworkAdapter(data, this);
         recyclerView.setAdapter(adapter);
 
         // Добавим разделитель карточек
@@ -99,5 +101,25 @@ public class SocialNetworkFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = requireActivity().getMenuInflater();
+        inflater.inflate(R.menu.card_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.action_update:
+                // Do some stuff
+                return true;
+            case R.id.action_delete:
+                // Do some stuff
+                return true;
+        }
+        return super.onContextItemSelected(item);
     }
 }
