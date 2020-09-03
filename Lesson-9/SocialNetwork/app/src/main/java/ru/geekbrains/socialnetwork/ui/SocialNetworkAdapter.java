@@ -81,7 +81,7 @@ public class SocialNetworkAdapter
         private AppCompatImageView image;
         private CheckBox like;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
             description = itemView.findViewById(R.id.description);
@@ -97,6 +97,15 @@ public class SocialNetworkAdapter
                     if (itemClickListener != null) {
                         itemClickListener.onItemClick(v, getAdapterPosition());
                     }
+                }
+            });
+
+            // Обработчик нажатий на картинке
+            image.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    itemView.showContextMenu(10, 10);
+                    return true;
                 }
             });
         }
