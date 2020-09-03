@@ -112,12 +112,19 @@ public class SocialNetworkFragment extends Fragment {
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
+        int position = adapter.getMenuPosition();
         switch(item.getItemId()) {
             case R.id.action_update:
-                // Do some stuff
+                data.updateCardData(position,
+                        new CardData("Кадр " + position,
+                            data.getCardData(position).getDescription(),
+                            data.getCardData(position).getPicture(),
+                            false));
+                adapter.notifyItemChanged(position);
                 return true;
             case R.id.action_delete:
-                // Do some stuff
+                data.deleteCardData(position);
+                adapter.notifyItemRemoved(position);
                 return true;
         }
         return super.onContextItemSelected(item);

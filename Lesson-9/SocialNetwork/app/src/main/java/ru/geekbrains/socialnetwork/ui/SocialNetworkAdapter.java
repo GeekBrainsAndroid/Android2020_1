@@ -23,6 +23,7 @@ public class SocialNetworkAdapter
     private final CardsSource dataSource;
     private final Fragment fragment;
     private OnItemClickListener itemClickListener;  // Слушатель будет устанавливаться извне
+    private int menuPosition;
 
     // Передаем в конструктор источник данных
     // В нашем случае это массив, но может быть и запросом к БД
@@ -66,6 +67,10 @@ public class SocialNetworkAdapter
         this.itemClickListener = itemClickListener;
     }
 
+    public int getMenuPosition() {
+        return menuPosition;
+    }
+
     // Интерфейс для обработки нажатий как в ListView
     public interface OnItemClickListener {
         void onItemClick(View view , int position);
@@ -104,6 +109,7 @@ public class SocialNetworkAdapter
             image.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
+                    menuPosition = getLayoutPosition();
                     itemView.showContextMenu(10, 10);
                     return true;
                 }
@@ -112,6 +118,13 @@ public class SocialNetworkAdapter
 
         private void registerContextMenu(@NonNull View itemView) {
             if (fragment != null){
+                itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        menuPosition = getLayoutPosition();
+                        return false;
+                    }
+                });
                 fragment.registerForContextMenu(itemView);
             }
         }
