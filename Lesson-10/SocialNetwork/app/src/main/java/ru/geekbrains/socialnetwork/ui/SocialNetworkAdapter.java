@@ -22,16 +22,20 @@ public class SocialNetworkAdapter
         extends RecyclerView.Adapter<SocialNetworkAdapter.ViewHolder> {
 
     private final static String TAG = "SocialNetworkAdapter";
-    private final CardsSource dataSource;
     private final Fragment fragment;
+    private CardsSource dataSource;
     private OnItemClickListener itemClickListener;  // Слушатель будет устанавливаться извне
     private int menuPosition;
 
     // Передаем в конструктор источник данных
     // В нашем случае это массив, но может быть и запросом к БД
-    public SocialNetworkAdapter(CardsSource dataSource, Fragment fragment) {
-        this.dataSource = dataSource;
+    public SocialNetworkAdapter(Fragment fragment) {
         this.fragment = fragment;
+    }
+
+    public void setDataSource(CardsSource dataSource){
+        this.dataSource = dataSource;
+        notifyDataSetChanged();
     }
 
     // Создать новый элемент пользовательского интерфейса
