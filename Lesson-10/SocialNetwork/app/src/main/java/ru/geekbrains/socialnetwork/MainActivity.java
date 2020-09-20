@@ -1,12 +1,12 @@
 package ru.geekbrains.socialnetwork;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.os.Bundle;
-
 import ru.geekbrains.socialnetwork.observe.Publisher;
-import ru.geekbrains.socialnetwork.ui.SocialNetworkFragment;
+import ru.geekbrains.socialnetwork.ui.StartFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         navigation = new Navigation(getSupportFragmentManager());
         initToolbar();
-        getNavigation().addFragment(SocialNetworkFragment.newInstance(), false);
+        getNavigation().addFragment(StartFragment.newInstance(), false);
     }
 
     private void initToolbar() {

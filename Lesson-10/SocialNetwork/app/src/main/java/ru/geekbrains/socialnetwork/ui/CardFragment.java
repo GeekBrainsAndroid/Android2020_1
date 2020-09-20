@@ -33,7 +33,7 @@ public class CardFragment extends Fragment {
     private TextInputEditText description;
     private DatePicker datePicker;
 
-    // Для релактирования данных
+    // Для редактирования данных
     public static CardFragment newInstance(CardData cardData) {
         CardFragment fragment = new CardFragment();
         Bundle args = new Bundle();
