@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="titles">
+        <item>@string/title1</item>
+        <item>@string/title2</item>
+        <item>@string/title3</item>
+        <item>@string/title4</item>
+        <item>@string/title5</item>
+        <item>@string/title6</item>
+        <item>@string/title7</item>
+    </string-array>
+
+    <string-array name="descriptions">
+        <item>@string/description1</item>
+        <item>@string/description2</item>
+        <item>@string/description3</item>
+        <item>@string/description4</item>
+        <item>@string/description5</item>
+        <item>@string/description6</item>
+        <item>@string/description7</item>
+    </string-array>
+
+    <array name="pictures">
+        <item>@drawable/nature1</item>
+        <item>@drawable/nature2</item>
+        <item>@drawable/nature3</item>
+        <item>@drawable/nature4</item>
+        <item>@drawable/nature5</item>
+        <item>@drawable/nature6</item>
+        <item>@drawable/nature7</item>
+    </array>
+
+</resources>
