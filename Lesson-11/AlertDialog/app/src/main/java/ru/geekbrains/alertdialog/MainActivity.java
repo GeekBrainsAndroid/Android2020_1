@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         alert1.setOnClickListener(clickAlertDialog1);
         Button alert3 = findViewById(R.id.alertDialog3);
         alert3.setOnClickListener(clickAlertDialog3);
+        Button alertList = findViewById(R.id.alertDialogList);
+        alertList.setOnClickListener(clickAlertDialogList);
     }
 
     private View.OnClickListener clickAlertDialog1 = new View.OnClickListener(){
@@ -90,6 +92,27 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.makeText(MainActivity.this, "Да!", Toast.LENGTH_SHORT).show();
                                 }
                             });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+    };
+
+    private View.OnClickListener clickAlertDialogList = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String[] items = getResources().getStringArray(R.array.choose);
+            // Создаём билдер и передаём контекст приложения
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            // В билдере указываем заголовок окна (можно указывать как ресурс, так
+            // и строку)
+            builder.setTitle(R.string.exclamation)
+                    // Добавим список элементов
+                    .setItems(items, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int item) {
+                            Toast.makeText(MainActivity.this, String.format("Выбран пункт %d", item + 1), Toast.LENGTH_SHORT).show();
+                        }
+                    });
             AlertDialog alert = builder.create();
             alert.show();
         }
