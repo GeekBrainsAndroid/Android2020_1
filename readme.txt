@@ -23,3 +23,9 @@
 Урок 8:
 	Lesson-8/CityHeraldry - "Создание списка надуванием"
 	Lesson-8/SocialNetwork - "Демонстрация создания списка"
+Урок 9:
+	Lesson-9/SocialNetwork - "Меню в приложении, добавление, изменение и удаление элементов в списке"
+Урок 10:
+	Lesson-10/SocialNetwork - "Firestore, аутентификация"
+Урок 11:
+	Lesson-11/AlertDialog - "Диалоговые окна"

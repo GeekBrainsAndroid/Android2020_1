@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Alert Dialog</string>
+    <string name="alert_dialog_1">Alert Dialog с одной кнопкой</string>
+    <string name="exclamation">Важное сообщение!</string>
+    <string name="press_button">Нажмите кнопку!</string>
+    <string name="button">КНОПКА</string>
+</resources>
