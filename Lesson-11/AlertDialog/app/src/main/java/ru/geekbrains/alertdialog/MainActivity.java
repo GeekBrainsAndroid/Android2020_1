@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
         alert3.setOnClickListener(clickAlertDialog3);
         Button alertList = findViewById(R.id.alertDialogList);
         alertList.setOnClickListener(clickAlertDialogList);
+        Button alertSingleList = findViewById(R.id.alertDialogListSingle);
+        alertSingleList.setOnClickListener(clickAlertDialogListSingle);
+        Button alertMultiList = findViewById(R.id.alertDialogListMulti);
+        alertMultiList.setOnClickListener(clickAlertDialogListMulti);
     }
 
     private View.OnClickListener clickAlertDialog1 = new View.OnClickListener(){
@@ -111,6 +115,89 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int item) {
                             Toast.makeText(MainActivity.this, String.format("Выбран пункт %d", item + 1), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+    };
+
+    private int chosen = -1;    // Здесь будет храниться выбранный пункт
+    private View.OnClickListener clickAlertDialogListSingle = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            final String[] items = getResources().getStringArray(R.array.choose);
+            // Создаём билдер и передаём контекст приложения
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            // В билдере указываем заголовок окна (можно указывать как ресурс, так
+            // и строку)
+            builder.setTitle(R.string.exclamation)
+                    // Добавляем список элементов; chosen - выбранный элемент,
+                    // если = -1, то ни один не выбран
+                    .setSingleChoiceItems(items, chosen, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int item) {
+                            chosen = item; // Обновляем выбранный элемент
+                        }
+                    })
+                    .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Toast.makeText(MainActivity.this, "Отмена!", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setPositiveButton("Ок", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (chosen == -1) {
+                                Toast.makeText(MainActivity.this, "Ок, пункт не выбран!", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            Toast.makeText(MainActivity.this, String.format("Ок, выбран '%s'!", items[chosen]), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+    };
+
+    private View.OnClickListener clickAlertDialogListMulti = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            final String[] items = getResources().getStringArray(R.array.choose);
+            final boolean[] chosen = {false, true, false};
+            // Создаём билдер и передаём контекст приложения
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            // В билдере указываем заголовок окна (можно указывать как ресурс, так
+            // и строку)
+            builder.setTitle(R.string.exclamation)
+                    // Добавляем список элементов; булев chosen - массив
+                    // с выбранными элементами
+                    .setMultiChoiceItems(items, chosen, new DialogInterface.OnMultiChoiceClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                            chosen[i] = b; // При переключении обновляем ячейку
+                            // в массиве
+                        }
+                    })
+                    .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Toast.makeText(MainActivity.this, "Отмена!", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setPositiveButton("Ок", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            // Собираем выбранные элементы в строку
+                            StringBuilder sb = new StringBuilder("Ок, выбрано: ");
+                            for (int index = 0; index < chosen.length; index++) {
+                                if (chosen[index]) {
+                                    sb.append(items[index]);
+                                    sb.append("; ");
+                                }
+                            }
+                            Toast.makeText(MainActivity.this, sb.toString(), Toast.LENGTH_SHORT).show();
                         }
                     });
             AlertDialog alert = builder.create();

@@ -3,6 +3,8 @@
     <string name="alert_dialog_1">Alert Dialog с одной кнопкой</string>
     <string name="alert_dialog_3">Alert Dialog с тремя кнопками</string>
     <string name="alert_dialog_list">Alert Dialog со списком</string>
+    <string name="alert_dialog_list_single">Alert Dialog с выбором одного</string>
+    <string name="alert_dialog_list_multi">Alert Dialog с выбором нескольких</string>
     <string name="exclamation">Важное сообщение!</string>
     <string name="press_button">Нажмите кнопку!</string>
     <string name="button">КНОПКА</string>

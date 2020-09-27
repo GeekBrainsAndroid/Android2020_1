@@ -25,4 +25,16 @@
         android:layout_height="wrap_content"
         android:text="@string/alert_dialog_list" />
 
+    <Button
+        android:id="@+id/alertDialogListSingle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/alert_dialog_list_single" />
+
+    <Button
+        android:id="@+id/alertDialogListMulti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/alert_dialog_list_multi" />
+
 </LinearLayout>
