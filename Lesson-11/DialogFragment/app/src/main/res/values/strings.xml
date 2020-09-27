@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Dialog Fragment</string>
+    <string name="dialog_builder">Диалог с билдером</string>
+    <string name="dialog_custom">Диалог кастомный</string>
+    <string name="title_dialog">Введите имя</string>
+    <string name="done">готово</string>
+</resources>

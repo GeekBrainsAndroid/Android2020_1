@@ -29,3 +29,4 @@
 	Lesson-10/SocialNetwork - "Firestore, аутентификация"
 Урок 11:
 	Lesson-11/AlertDialog - "Диалоговые окна"
+	Lesson-11/AlertDialog - "Диалоговые окна на основе фрагментов"
