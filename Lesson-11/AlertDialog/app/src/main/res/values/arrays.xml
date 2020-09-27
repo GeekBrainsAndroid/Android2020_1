@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="choose">
+        <item>@string/first_item</item>
+        <item>@string/second_item</item>
+        <item>@string/third_item</item>
+    </string-array>
+    <string name="first_item">Первый пункт</string>
+    <string name="second_item">Второй пункт</string>
+    <string name="third_item">Третий пункт</string>
+</resources>
