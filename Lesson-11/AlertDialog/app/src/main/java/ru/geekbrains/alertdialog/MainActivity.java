@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         alertSingleList.setOnClickListener(clickAlertDialogListSingle);
         Button alertMultiList = findViewById(R.id.alertDialogListMulti);
         alertMultiList.setOnClickListener(clickAlertDialogListMulti);
+        Button alertCustom = findViewById(R.id.alertDialogCustom);
+        alertCustom.setOnClickListener(clickAlertDialogCustom);
     }
 
     private View.OnClickListener clickAlertDialog1 = new View.OnClickListener(){
@@ -198,6 +201,26 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                             Toast.makeText(MainActivity.this, sb.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+    };
+
+    private View.OnClickListener clickAlertDialogCustom = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final View contentView = getLayoutInflater().inflate(R.layout.dialog_custom, null);
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this)
+                    .setTitle(R.string.exclamation)
+                    .setView(contentView)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            EditText editText = contentView.findViewById(R.id.editText);
+                            String answer = editText.getText().toString();
+                            Toast.makeText(MainActivity.this, answer, Toast.LENGTH_SHORT).show();
                         }
                     });
             AlertDialog alert = builder.create();

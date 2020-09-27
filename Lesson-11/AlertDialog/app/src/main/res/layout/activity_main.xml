@@ -37,4 +37,10 @@
         android:layout_height="wrap_content"
         android:text="@string/alert_dialog_list_multi" />
 
+    <Button
+        android:id="@+id/alertDialogCustom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/alert_dialog_custom_form" />
+
 </LinearLayout>
